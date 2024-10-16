@@ -144,7 +144,8 @@ export const CabeceoDashboard = () => {
 				</div>
 
 				<div className="w-full flex flex-col gap-6">
-					{reportes.isLoading && <span>loading report...</span>}
+					{reportes.isLoading && <p className="text-center mt-5 text-blue-500">loading report...</p>}
+					{reportes.hasError && <p className="text-center mt-5 text-yellow-500">Error: {reportes.error}</p>}
 					{
 						!reportes.isLoading && reportes.data.length > 0 && reportes.data.map((item, index) => {
 							const mayorResumenOriginal = {
@@ -183,13 +184,13 @@ export const CabeceoDashboard = () => {
 							return (
 								<div
 									className={cn(
-										"w-full flex gap-6 flex-wrap lg:flex-row flex-col-reverse",
+										"w-full flex gap-6 flex-nowrap lg:flex-row flex-col-reverse",
 										index % 2 === 0 ? " lg:flex-row" : "lg:flex-row-reverse"
 									)}
 									key={`${item.modelo}-${index}`}
 								>
 									{/* <div className='grid w-full gap-6 2xl:max-w-7xl xl:max-w-4xl lg:max-w-xl'> */}
-									<div className="flex-1 h-full">
+									<div className="grow">
 										<ChartsDashboard data={item} title={`Consumo de ${item.modelo}`} />
 									</div>
 									<ChartsInfo
