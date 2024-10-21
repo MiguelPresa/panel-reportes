@@ -1,3 +1,4 @@
+/* REPORTE */
 export type ReporteModel = {
 	fecha: string
 	resumen: number
@@ -5,7 +6,21 @@ export type ReporteModel = {
 	tituloResumen: number
 }
 
+export type ApiKeyFormat = {
+	apikey: string
+	proyecto: string
+	total: number
+}
+export interface Apikeys {
+	fecha: string
+	data: ApiKeyFormat[]
+}
+export interface VerificadorApikey {
+	fecha: string
+	data: ApiKeyFormat[]
+}
 
+/* LOGS */
 
 export type FolderInfo = {
 	name: string
@@ -55,6 +70,8 @@ export type FetchStateReporte = {
 	modelo: string
 	original: ReporteModel[]
 	verificador: ReporteModel[]
+	apikeys: Apikeys[]
+	verificador_apikeys: VerificadorApikey[]
 }
 
 // Logs
@@ -73,5 +90,3 @@ export type FetchStateContentInfo = {
 	newOffset: number,
 	total: number,
 }
-
-
