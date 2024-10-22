@@ -1,122 +1,177 @@
 [
-  {
-      "socialmedia": {
-          "controller": "Instagram",
-          "method": "getInstagramContent",
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/stories/autosymas/3403583964722914651/","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-03 14:12:16"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/stories/autosymas/","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-03 14:13:01"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/p/C89xCv4OEfY/","type":"instagram","user":{"userid":"162","userid4":"22325","username":"miguel.presa"},"date":"2024-07-03 14:26:42"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/p/C85JjJLPWkW/","type":"instagram","user":{"userid":"162","userid4":"22325","username":"miguel.presa"},"date":"2024-07-03 14:27:14"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.facebook.com/533236008969749/posts/803370008623013","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-04 07:12:58"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.facebook.com/671162041726208/posts/873070851535325","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-04 07:18:17"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://twitter.com/Reporte_Indigo/status/1808610416240501051","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-04 07:22:41"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/p/C8-ms9MvlRj/","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-04 07:25:10"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/p/C8_Jt84Cytx/","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-04 07:44:41"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/p/C8-aIvjRobj/","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-04 07:49:12"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/stories/cantogoles/?hl=es","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-04 09:13:33"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/stories/deceroa100mx/3404948401328579252/","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-04 15:14:19"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":false},"search":"ananarro","type":"instagram","user":{"userid":"22325","userid4":"null","username":"null"},"date":"2024-07-05 17:37:46"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":false},"search":"https://www.instagram.com/p/C8cs3gwugW_/","type":"instagram","user":{"userid":"22325","userid4":"null","username":"null"},"date":"2024-07-05 17:38:51"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":false},"search":"https://www.instagram.com/stories/als.katee/3405174300015525246/","type":"instagram","user":{"userid":"22325","userid4":"null","username":"null"},"date":"2024-07-05 17:43:58"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":false},"search":"https://www.instagram.com/stories/ensuenomx/3344924612180925246/","type":"instagram","user":{"userid":"22325","userid4":"null","username":"null"},"date":"2024-07-05 17:44:18"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":false},"search":"https://www.instagram.com/stories/orianakane/3405586900284795848/","type":"instagram","user":{"userid":"22325","userid4":"null","username":"null"},"date":"2024-07-05 17:44:46"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":false},"search":"https://www.instagram.com/p/C6VAb3PMr0a/?img_index=1","type":"instagram","user":{"userid":"22325","userid4":"null","username":"null"},"date":"2024-07-05 17:44:59"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":false},"search":"https://www.instagram.com/stories/nicki.nicole/","type":"instagram","user":{"userid":"22325","userid4":"null","username":"null"},"date":"2024-07-05 17:49:15"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/p/C8cs3gwugW_/","type":"instagram","user":{"userid":"162","userid4":"22325","username":"miguel.presa"},"date":"2024-07-05 17:53:34"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/p/C6VAb3PMr0a/?img_index=1","type":"instagram","user":{"userid":"162","userid4":"22325","username":"miguel.presa"},"date":"2024-07-05 17:55:30"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/stories/orianakane/3405586900284795848/","type":"instagram","user":{"userid":"162","userid4":"22325","username":"miguel.presa"},"date":"2024-07-05 17:55:42"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/mundodelautomovilmx/","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-06 19:15:39"},
+    {"socialmedia":{"controller":"Instagram","method":"getInstagramContent","active":true},"search":"https://www.instagram.com/mundodelautomovilmx/","type":"instagram","user":{"userid":"194","userid4":"22445","username":"wendy.ramosinn"},"date":"2024-07-06 19:30:45"},
+    {
+        "socialmedia": {
+          "controller": "Facebook",
+          "method": "getFacebookContent",
           "active": true
+        },
+        "search": "https://www.facebook.com/luisgarciapostigoficial/videos/952346280031041",
+        "type": "facebook",
+        "user": {
+          "userid": "162",
+          "userid4": "22325",
+          "username": "miguel.presa"
+        },
+        "date": "2024-10-17 11:04:55"
       },
-      "search": "https://www.instagram.com/stories/fran1194/3481925593923564736/",
-      "type": "instagram",
-      "user": {
+      {
+        "socialmedia": {
+          "controller": "Tiktok",
+          "method": "getTiktokContent",
+          "active": true
+        },
+        "search": "https://www.tiktok.com/@sec2john/video/7405599974181850401?is_from_webapp=1",
+        "type": "tiktok",
+        "user": {
+          "userid": "162",
+          "userid4": "22325",
+          "username": "miguel.presa"
+        },
+        "date": "2024-10-17 13:54:45"
+      },
+      {
+        "socialmedia": {
+          "controller": "Tiktok",
+          "method": "getTiktokContent",
+          "active": true
+        },
+        "search": "https://vm.tiktok.com/ZMhPP6s58/",
+        "type": "tiktok",
+        "user": {
+          "userid": "162",
+          "userid4": "22325",
+          "username": "miguel.presa"
+        },
+        "date": "2024-10-17 13:57:13"
+      },
+      {
+        "socialmedia": {
+          "controller": "Tiktok",
+          "method": "getTiktokContent",
+          "active": true
+        },
+        "search": "https://vm.tiktok.com/ZMhPP6s58/",
+        "type": "tiktok",
+        "user": {
+          "userid": "162",
+          "userid4": "22325",
+          "username": "miguel.presa"
+        },
+        "date": "2024-10-17 13:57:30"
+      },
+      {
+        "socialmedia": {
+          "controller": "Facebook",
+          "method": "getFacebookContent",
+          "active": true
+        },
+        "search": "https://www.facebook.com/luisgarciapostigoficial/videos/952346280031041",
+        "type": "facebook",
+        "user": {
+          "userid": "162",
+          "userid4": "22325",
+          "username": "miguel.presa"
+        },
+        "date": "2024-10-17 13:57:55"
+      },
+      {
+        "socialmedia": {
+          "controller": "Tiktok",
+          "method": "getTiktokContent",
+          "active": true
+        },
+        "search": "https://vm.tiktok.com/ZMhPP6s58/",
+        "type": "tiktok",
+        "user": {
+          "userid": "162",
+          "userid4": "22325",
+          "username": "miguel.presa"
+        },
+        "date": "2024-10-17 14:39:53"
+      },
+      {
+        "socialmedia": {
+          "controller": "Facebook",
+          "method": "getFacebookContent",
+          "active": true
+        },
+        "search": "https://www.facebook.com/986108523521233/posts/1055093203289431",
+        "type": "facebook",
+        "user": {
           "userid": "194",
           "userid4": "22445",
           "username": "wendy.ramosinn"
+        },
+        "date": "2024-09-19 07:15:53"
       },
-      "date": "2024-10-18 21:19:11"
-  },
-  {
-      "socialmedia": {
-          "controller": "Instagram",
-          "method": "getInstagramContent",
+      {
+        "socialmedia": {
+          "controller": "Facebook",
+          "method": "getFacebookContent",
           "active": true
-      },
-      "search": "https://www.instagram.com/stories/playerone360/3482443772217018537/",
-      "type": "instagram",
-      "user": {
+        },
+        "search": "https://www.facebook.com/303823229278922/posts/495658813428695",
+        "type": "facebook",
+        "user": {
           "userid": "194",
           "userid4": "22445",
           "username": "wendy.ramosinn"
+        },
+        "date": "2024-09-19 07:20:49"
       },
-      "date": "2024-10-19 18:13:03"
-  },
-  {
-      "socialmedia": {
-          "controller": "Instagram",
-          "method": "getInstagramContent",
+      {
+        "socialmedia": {
+          "controller": "Facebook",
+          "method": "getFacebookContent",
           "active": true
-      },
-      "search": "https://www.instagram.com/stories/_fanautomovil/3482643656043931948/",
-      "type": "instagram",
-      "user": {
+        },
+        "search": "https://www.facebook.com/303823229278922/posts/495658813428695",
+        "type": "facebook",
+        "user": {
           "userid": "194",
           "userid4": "22445",
           "username": "wendy.ramosinn"
+        },
+        "date": "2024-09-19 07:20:59"
       },
-      "date": "2024-10-19 18:22:46"
-  },
-  {
-      "socialmedia": {
-          "controller": "Instagram",
-          "method": "getInstagramContent",
+      {
+        "socialmedia": {
+          "controller": "Facebook",
+          "method": "getFacebookContent",
           "active": true
-      },
-      "search": "https://www.instagram.com/stories/vectorpadelcup/",
-      "type": "instagram",
-      "user": {
-          "userid": "134",
-          "userid4": "22243",
-          "username": "fatima.vegame"
-      },
-      "date": "2024-10-20 06:30:30"
-  },
-  {
-      "socialmedia": {
-          "controller": "Instagram",
-          "method": "getInstagramContent",
-          "active": true
-      },
-      "search": "https://www.instagram.com/stories/_fanautomovil/",
-      "type": "instagram",
-      "user": {
-          "userid": "134",
-          "userid4": "22243",
-          "username": "fatima.vegame"
-      },
-      "date": "2024-10-20 06:58:08"
-  },
-  {
-      "socialmedia": {
-          "controller": "Instagram",
-          "method": "getInstagramContent",
-          "active": true
-      },
-      "search": "https://www.instagram.com/stories/cervantino/",
-      "type": "instagram",
-      "user": {
-          "userid": "134",
-          "userid4": "22243",
-          "username": "fatima.vegame"
-      },
-      "date": "2024-10-20 07:19:25"
-  },
-  {
-      "socialmedia": {
-          "controller": "Instagram",
-          "method": "getInstagramContent",
-          "active": true
-      },
-      "search": "https://www.instagram.com/p/DBRCzhiqQDY/",
-      "type": "instagram",
-      "user": {
-          "userid": "134",
-          "userid4": "22243",
-          "username": "fatima.vegame"
-      },
-      "date": "2024-10-20 10:36:26"
-  },
-  {
-      "socialmedia": {
-          "controller": "Instagram",
-          "method": "getInstagramContent",
-          "active": true
-      },
-      "search": "https://www.instagram.com/p/DBXUB7nP7Xs/",
-      "type": "instagram",
-      "user": {
-          "userid": "134",
-          "userid4": "22243",
-          "username": "fatima.vegame"
-      },
-      "date": "2024-10-21 05:16:09"
-  }
-]
+        },
+        "search": "https://www.facebook.com/254608053593804/posts/559943836393556",
+        "type": "facebook",
+        "user": {
+          "userid": "194",
+          "userid4": "22445",
+          "username": "wendy.ramosinn"
+        },
+        "date": "2024-09-19 07:23:04"
+      }
+  ]
+  
