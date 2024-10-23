@@ -1,7 +1,7 @@
 
 import { BaseQueryApi, createApi, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { API_URL, LIMIT_CONTENT } from '@/config/configuration'
-import { FetchStateContentInfo, FetchStateDateRange, FetchStateFiles, FetchStateFolders, FetchStateReporte } from '../types'
+import { FetchStateContentInfo, FetchStateDateRange, FetchStateFiles, FetchStateFolders, FetchStateReporte, FetchStateReporteProyecto } from '../types'
 import { isErrorResponseAPI, isResponseAPI, ResponseAPI } from '@/shared'
 
 const category = "cabeceo"
@@ -58,8 +58,12 @@ export const cabeceoApi = createApi({
 			transformResponse: (response: ResponseAPI<FetchStateDateRange>) => response.data,
 		}),
 		getReporte: builder.query<FetchStateReporte[], RangeDate>({
-			query: ({minDate, maxDate}) => `${category}/Reporte/getReporte?minDate=${minDate}&maxDate=${maxDate}`,
+			query: ({ minDate, maxDate }) => `${category}/Reporte/getReporte?minDate=${minDate}&maxDate=${maxDate}`,
 			transformResponse: (response: ResponseAPI<FetchStateReporte[]>) => response.data,
+		}),
+		getReporteProyecto: builder.query<FetchStateReporteProyecto, RangeDate>({
+			query: ({ minDate, maxDate }) => `${category}/Reporte/getReporteProyecto?minDate=${minDate}&maxDate=${maxDate}`,
+			transformResponse: (response: ResponseAPI<FetchStateReporteProyecto>) => response.data,
 		}),
 		getFolders: builder.query<FetchStateFolders, number>({
 			query: (limit = LIMIT_CONTENT) => `${category}/Logs/getFolderList?limit=${limit}`,
@@ -78,4 +82,4 @@ export const cabeceoApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetDateRangesQuery, useGetReporteQuery, useGetFoldersQuery, useGetFilesQuery, useReadContentFileQuery } = cabeceoApi
+export const { useGetDateRangesQuery, useGetReporteQuery, useGetReporteProyectoQuery, useGetFoldersQuery, useGetFilesQuery, useReadContentFileQuery } = cabeceoApi

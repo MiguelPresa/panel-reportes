@@ -1,9 +1,8 @@
-import { CodeViewDraw, CodeViewerDrawer, DataTable, DataTableColumnHeader } from "@/shared"
-import { ColumnDef } from '@tanstack/react-table';
-import { useCabeceoLogs } from "../hooks"
+import { ColumnDef } from "@tanstack/react-table"
 import { ContentFile } from "../types"
+import { CodeViewDraw, CodeViewerDrawer, DataTableColumnHeader } from "@/shared"
 
-const columns: ColumnDef<ContentFile>[] = [
+export const columns: ColumnDef<ContentFile>[] = [
 	{
 		id: "id",
 		header: "#",
@@ -16,18 +15,6 @@ const columns: ColumnDef<ContentFile>[] = [
 		header: ({ column }) => {
 			return <DataTableColumnHeader column={column} title="ClipID" />
 		},
-		/* cell: ({ row }) => {
-			const label = labels.find((label) => label.value === row.original.label)
-
-			return (
-				<div className="flex space-x-2">
-					{label && <Badge variant="outline">{label.label}</Badge>}
-					<span className="max-w-[500px] truncate font-medium">
-						{row.getValue("title")}
-					</span>
-				</div>
-			)
-		}, */
 	},
 	{
 		accessorKey: "digest",
@@ -110,29 +97,3 @@ const columns: ColumnDef<ContentFile>[] = [
 	},
 
 ]
-
-export const DataTableContentFile = () => {
-	const { statuses, statusesApiKey, contentFile, uploadContentFile } = useCabeceoLogs()
-	return (
-		<DataTable
-			columns={columns}
-			filtered={[
-				{
-					column: "accion",
-					title: "Accion",
-					options: statuses
-				}, {
-					column: "api_key",
-					title: "APIKEY",
-					options: statusesApiKey
-				}
-			]}
-			data={contentFile.data}
-			total={contentFile.total}
-			isLoading={contentFile.isLoading}
-			hasError={contentFile.hasError}
-			error={contentFile.error}
-			refetch={uploadContentFile}
-		/>
-	)
-};

@@ -1,11 +1,12 @@
 import { ChartContainer } from "@/components/ui/chart";
-import { MaxContentDescription } from "../types/DashBoardTypes";
+import { MaxContentDescription } from "../../types/DashBoardTypes";
 import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 
-type CardChartProps = {
+type OnlyBarChartProps = {
 	content: MaxContentDescription
 }
-export const CardChart = ({ content }: CardChartProps) => {
+
+export const OnlyBarChart = ({ content }: OnlyBarChartProps) => {
 	return (
 		<div className="grid auto-rows-min gap-2" key={content.description}>
 			<div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">

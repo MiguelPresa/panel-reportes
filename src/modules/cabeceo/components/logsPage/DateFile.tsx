@@ -7,7 +7,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/ui/popover";
-import { useCabeceoLogs } from "../hooks";
+import { useCabeceoLogs } from "../../hooks";
 import { useState } from "react";
 import { dateFormat } from "@/shared";
 
@@ -21,7 +21,6 @@ export function DateFile() {
 			<div className="flex flex-col justify-center gap-1 space-x-4">
 				<Popover open={open} onOpenChange={setOpen} >
 					<PopoverTrigger asChild>
-						{/* <FormControl> */}
 						<Button
 							variant={"outline"}
 							disabled={datesFiles.length === 0}
@@ -39,12 +38,10 @@ export function DateFile() {
 							)}
 							<CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
 						</Button>
-						{/* </FormControl> */}
 					</PopoverTrigger>
 					<PopoverContent className="w-auto p-0" align="start">
 						<Calendar
 							mode="single"
-							// selected={dateFile ? formatStringToDate(dateFile) : dateFile}
 							onSelect={(currentValue) => {
 								handleSetDateFile(currentValue)
 								setOpen(false)
@@ -71,23 +68,3 @@ export function DateFile() {
 		)
 	)
 }
-
-// <Form {...form}>
-// 	<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-// 		<FormField
-// 			control={form.control}
-// 			name="dob"
-// 			render={({ field }) => (
-// 				<FormItem className="flex flex-col">
-// 					<FormLabel>Date of birth</FormLabel>
-
-// 					<FormDescription>
-// 						Your date of birth is used to calculate your age.
-// 					</FormDescription>
-// 					<FormMessage />
-// 				</FormItem>
-// 			)}
-// 		/>
-// 		<Button type="submit">Submit</Button>
-// 	</form>
-// </Form>

@@ -1,8 +1,8 @@
-import { useGetDateRangesQuery, useGetReporteQuery } from "../services";
+import { useGetDateRangesQuery, useGetReporteProyectoQuery, useGetReporteQuery } from "../services";
 import { dateFormat, FetchState, formatStringToDate } from "@/shared";
 import { DateRange } from "react-day-picker";
 import { useEffect, useState } from "react";
-import { FetchStateReporte } from "../types";
+import { FetchStateReporte, FetchStateReporteProyecto } from "../types";
 
 const initialDate: DateRange = {
 	from: new Date(new Date().setDate(new Date().getDate() - 3)),
@@ -23,6 +23,16 @@ export const useCabeceoDashBoard = () => {
 		},
 		{ skip: !date || !date.from || !date.to, refetchOnMountOrArgChange: true, }
 	)
+	const { data: reporteData, isLoading: reporteIsLoading, isError: reporteIsError, error: reporteError, refetch: refetchReporte, isFetching: isFetchingReporte } = getReporte
+
+	const getReporteProyecto = useGetReporteProyectoQuery(
+		{
+			minDate: dateFormat(date?.from),
+			maxDate: dateFormat(date?.to)
+		},
+		{ skip: !date || !date.from || !date.to, refetchOnMountOrArgChange: true, }
+	)
+	const { data: reporteProyectoData, isLoading: reporteProyectoIsLoading, isError: reporteProyectoIsError, error: reporteProyectoError, isFetching: isFetchingReporteProyecto } = getReporteProyecto
 
 	const dateRanges: FetchState<DateRange> = {
 		data: {
@@ -34,22 +44,29 @@ export const useCabeceoDashBoard = () => {
 		hasError: !!dateRangesIsError,
 		error: dateRangesError ? (typeof dateRangesError === "string" ? dateRangesError : "Error al obtener el rango de fechas") : undefined
 	}
-	const { data: reporteData, isLoading: reporteIsLoading, isError: reporteIsError, error: reporteError, refetch, isFetching } = getReporte
 
 	const reportes: FetchState<FetchStateReporte[]> = {
 		data: reporteData || [],
-		isLoading: reporteIsLoading || isRefetching || isFetching,
+		isLoading: reporteIsLoading || isRefetching || isFetchingReporte,
 		total: reporteData?.length || 0,
 		hasError: !!reporteIsError,
 		error: reporteError ? (typeof reporteError === "string" ? reporteError : "Error al obtener el rango de fechas") : undefined
 	}
 
+	const reportesProyecto: FetchState<FetchStateReporteProyecto | null> = {
+		data: reporteProyectoData || null,
+		isLoading: reporteProyectoIsLoading || isRefetching || isFetchingReporteProyecto,
+		total: 0,
+		hasError: !!reporteProyectoIsError,
+		error: reporteProyectoError ? (typeof reporteProyectoError === "string" ? reporteProyectoError : "Error al obtener el rango de fechas") : undefined
+	}
+
 	useEffect(() => {
 		if (date?.from && date?.to) {
 			setIsRefetching(true);
-			refetch().finally(() => setIsRefetching(false));
+			refetchReporte().finally(() => setIsRefetching(false));
 		}
-	}, [date, refetch]);
+	}, [date, refetchReporte]);
 
 	const handleDateChange = (newDate: DateRange | undefined) => {
 		setDate(newDate);
@@ -59,6 +76,7 @@ export const useCabeceoDashBoard = () => {
 		dateRanges,
 		rangeDate: date,
 		reportes,
+		reportesProyecto,
 
 		handleDateChange
 	}

@@ -1,6 +1,6 @@
 import { Header } from "@/dashboard";
 import { cabeceoRouterLinks } from "../routes";
-import { DataTableContentFile, DateFile, SelectFiles, SelectFolders } from "../components";
+import { DataTableContentFileLogs, DateFile, SelectFiles, SelectFolders } from "../components";
 
 export const CabeceoLogs = () => {
 	return (
@@ -16,7 +16,7 @@ export const CabeceoLogs = () => {
 				<DateFile />
 				<SelectFiles />
 			</section>
-			<DataTableContentFile />
+			<DataTableContentFileLogs />
 		</>
 	)
 };

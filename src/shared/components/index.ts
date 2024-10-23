@@ -1,6 +1,2 @@
 export * from "./CodeViewerDrawer"
-export * from "./DataTable"
-export * from "./DataTableColumnHeader"
-export * from "./DataTableFacetedFilter"
-export * from "./DataTableToolbar"
-export * from "./DataTableViewOptions"
+export * from "./table"

@@ -5,12 +5,19 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components//ui/card"
-import { CardChart } from "./CardChart"
-import { ChartsInfoType, ChartsInfoProps } from "../types"
+import { OnlyBarChart } from "./OnlyBarChart"
+import { MaxContentDescription } from "../../types"
 
-export const description = "A collection of health charts."
+export interface ChartsCardInfoProps {
+	title: string,
+	titleTwo: string,
+	description?: string
+	content: MaxContentDescription[]
+	verificador: MaxContentDescription[]
+}
 
-export const ChartsCardInfo = ({ title, description, content }: ChartsInfoType) => {
+
+export const ChartsCardInfo = ({ title, description, content }: ChartsCardInfoProps) => {
 	return (
 		<Card className="max-w-xs" x-chunk="charts-01-chunk-2"				>
 			<CardHeader>
@@ -23,7 +30,7 @@ export const ChartsCardInfo = ({ title, description, content }: ChartsInfoType) 
 				{
 					content.length > 0 &&
 					content.map(original => (
-						original.max > 0 && <CardChart content={original} />
+						original.max > 0 && <OnlyBarChart content={original} />
 					))
 
 				}
@@ -32,7 +39,11 @@ export const ChartsCardInfo = ({ title, description, content }: ChartsInfoType) 
 	)
 };
 
-export function ChartsInfo({ title, titleTwo, description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", content, verificador }: ChartsInfoProps) {
+export interface CardsBarMixInfoModelsProps extends ChartsCardInfoProps {
+	verificador: MaxContentDescription[]
+}
+
+export function CardsBarMixedInfoModels({ title, titleTwo, description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", content, verificador }: CardsBarMixInfoModelsProps) {
 	return (
 		<div className="flex lg:flex-col flex-row gap-4"			>
 			<Card className="max-w-xs" x-chunk="charts-01-chunk-2"				>
@@ -46,7 +57,7 @@ export function ChartsInfo({ title, titleTwo, description = "Lorem ipsum dolor s
 					{
 						content.length > 0 &&
 						content.map(original => (
-							original.max > 0 && <CardChart key={original.max} content={original} />
+							original.max > 0 && <OnlyBarChart key={original.max} content={original} />
 						))
 
 					}
@@ -63,7 +74,7 @@ export function ChartsInfo({ title, titleTwo, description = "Lorem ipsum dolor s
 					{
 						verificador.length > 0 &&
 						verificador.map(original => (
-							original.max > 0 && <CardChart key={original.color} content={original} />
+							original.max > 0 && <OnlyBarChart key={original.color} content={original} />
 						))
 
 					}

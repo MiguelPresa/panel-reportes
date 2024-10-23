@@ -1,8 +1,8 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { ColumnDef, ColumnFiltersState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table"
+import { ColumnDef, ColumnFiltersState, flexRender, getCoreRowModel, getFacetedRowModel, getFacetedUniqueValues, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, SortingState, useReactTable } from "@tanstack/react-table"
 import { useMemo, useState } from "react"
-import { DataTableToolbar } from "./DataTableToolbar"
 import { DataTableFacetedFilterOptions } from "./DataTableFacetedFilter"
+import { DataTableToolbar } from "./DataTableToolbar"
 import { DataTablePagination } from "./DataTablePagination"
 
 interface DataTableProps<TData, TValue> {
@@ -24,6 +24,7 @@ interface DataTableProps<TData, TValue> {
 
 export const DataTable = <TData, TValue>({ columns, data, filtered, total, isLoading, hasError, error, refetch }: DataTableProps<TData, TValue>) => {
 	const [sorting, setSorting] = useState<SortingState>([]);
+	const [rowSelection, setRowSelection] = useState({})
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
 	const [globalFilter, setGlobalFilter] = useState('');
 	const [{ pageIndex, pageSize }, setPagination] = useState({
@@ -37,17 +38,18 @@ export const DataTable = <TData, TValue>({ columns, data, filtered, total, isLoa
 	}),
 		[pageIndex, pageSize])
 
-
 	const table = useReactTable({
 		data,
 		columns,
 		pageCount: Math.ceil(total / pageSize),
 		state: {
 			sorting,
+			rowSelection,
 			columnFilters,
 			globalFilter,
 			pagination
 		},
+		enableRowSelection: true,
 		getCoreRowModel: getCoreRowModel(),
 		getPaginationRowModel: getPaginationRowModel(),
 		onSortingChange: setSorting,
@@ -56,6 +58,10 @@ export const DataTable = <TData, TValue>({ columns, data, filtered, total, isLoa
 		getFilteredRowModel: getFilteredRowModel(),
 		onGlobalFilterChange: setGlobalFilter,
 		onPaginationChange: setPagination,
+
+		onRowSelectionChange: setRowSelection,
+		getFacetedRowModel: getFacetedRowModel(),
+		getFacetedUniqueValues: getFacetedUniqueValues(),
 	})
 
 	return (
