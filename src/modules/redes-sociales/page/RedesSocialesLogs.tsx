@@ -5,12 +5,12 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { ChartsTypeRSLogs } from "../components/ChartsTypeRSLogs";
 import { ChartsUsersRSLogs } from "../components/ChartsUsersRSLogs";
 import { ChartsStatusRSLogs } from "../components/ChartsStatusRSLogs";
-import { DataTablePagination } from "../../../shared/components/DataTablePagination"; 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
+import { DataTablePagination } from "@/shared";
 
 interface Log {
   id: number;
