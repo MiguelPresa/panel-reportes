@@ -3,18 +3,14 @@ import { Header } from "@/dashboard";
 import { rsRouterLinks } from "../routes";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { ChartsTypeRSLogs } from "../components/ChartsTypeRSLogs";
-import { Table } from "@/components/ui/table";
 import { ChartsUsersRSLogs } from "../components/ChartsUsersRSLogs";
 import { ChartsStatusRSLogs } from "../components/ChartsStatusRSLogs";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import { DataTablePagination } from "../../../shared/components/DataTablePagination"; 
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
 
 interface Log {
   id: number;
@@ -35,10 +31,10 @@ export const RedesSocialesLogs: React.FC = () => {
   const [logs, setLogs] = useState<Log[]>([]);
   const [filteredLogs, setFilteredLogs] = useState<Log[]>([]);
   const [error, setError] = useState<string | null>(null);
-
-  // Paginación
+  
+  const [rangeDate, setRangeDate] = useState<{ from: Date | null; to: Date | null }>({ from: null, to: null });
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [logsPerPage] = useState<number>(10);
+  const [logsPerPage, setLogsPerPage] = useState<number>(10); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,17 +66,24 @@ export const RedesSocialesLogs: React.FC = () => {
       selectedNetwork === "Todas"
         ? logs
         : logs.filter((log) => log.socialmedia.type === selectedNetwork.toLowerCase());
-    setFilteredLogs(newFilteredLogs);
-  }, [selectedNetwork, logs]);
 
-  // Calcular los logs actuales
+    if (rangeDate.from && rangeDate.to) {
+      const startDate = new Date(rangeDate.from).getTime();
+      const endDate = new Date(rangeDate.to).getTime();
+      setFilteredLogs(newFilteredLogs.filter(log => {
+        const logDate = new Date(log.date).getTime();
+        return logDate >= startDate && logDate <= endDate;
+      }));
+    } else {
+      setFilteredLogs(newFilteredLogs);
+    }
+  }, [selectedNetwork, logs, rangeDate]);
+
   const indexOfLastLog = currentPage * logsPerPage;
   const indexOfFirstLog = indexOfLastLog - logsPerPage;
   const currentLogs = filteredLogs.slice(indexOfFirstLog, indexOfLastLog);
-
   const totalPages = Math.ceil(filteredLogs.length / logsPerPage);
 
-  // Funciones de paginación
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -89,12 +92,74 @@ export const RedesSocialesLogs: React.FC = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
+  const handleDateChange = (range: { from: Date | null; to: Date | null }) => {
+    setRangeDate(range);
+  };
+
+  const handleDownloadReport = () => {
+    const filteredData = filteredLogs.map(log => ({
+      id: log.id,
+      date: log.date,
+      username: log.user.username,
+      controller: log.socialmedia.controller,
+      method: log.socialmedia.method,
+      status: log.socialmedia.active ? "Activo" : "Inactivo",
+    }));
+
+    const csvContent = [
+      ["ID", "Fecha", "Usuario", "Red Social", "Método", "Estado"],
+      ...filteredData.map(log => [
+        log.id,
+        log.date,
+        log.username,
+        log.controller,
+        log.method,
+        log.status,
+      ])
+    ]
+      .map(e => e.join(",")) 
+      .join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.setAttribute("download", "report.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <Header headerContent={[rsRouterLinks[0], rsRouterLinks[1]]} />
       <h1>Redes Sociales Logs</h1>
 
       {error && <div className="error">{error}</div>}
+
+      <div className="mb-6">
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant={"outline"} className="mr-2">
+              <CalendarIcon className="mr-2 h-4 w-4" />
+              {rangeDate.from && rangeDate.to
+                ? `${format(rangeDate.from, "LLL dd, y")} - ${format(rangeDate.to, "LLL dd, y")}`
+                : "Selecciona un rango de fechas"}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-0" align="start">
+            <Calendar
+              initialFocus
+              mode="range"
+              selected={rangeDate}
+              onSelect={handleDateChange}
+              numberOfMonths={2}
+            />
+          </PopoverContent>
+        </Popover>
+        <Button onClick={handleDownloadReport} disabled={!rangeDate.from || !rangeDate.to}>
+          Descargar Reporte
+        </Button>
+      </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
         <Card>
@@ -120,7 +185,7 @@ export const RedesSocialesLogs: React.FC = () => {
         </Card>
       </div>
 
-      <Table>
+      <table>
         <thead>
           <tr>
             <th>Número de Petición</th>
@@ -143,33 +208,22 @@ export const RedesSocialesLogs: React.FC = () => {
             </tr>
           ))}
         </tbody>
-      </Table>
+      </table>
 
-      {/* Paginación */}
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" onClick={prevPage} />
-          </PaginationItem>
-          {Array.from({ length: totalPages }, (_, index) => (
-            <PaginationItem key={index + 1}>
-              <PaginationLink
-                href="#"
-                onClick={() => paginate(index + 1)}
-                isActive={currentPage === index + 1}
-              >
-                {index + 1}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" onClick={nextPage} />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <DataTablePagination
+        total={filteredLogs.length}
+        table={{
+          getFilteredRowModel: () => ({ rows: filteredLogs }),
+          getState: () => ({ pagination: { pageSize: logsPerPage, pageIndex: currentPage - 1 } }),
+          setPageSize: setLogsPerPage,
+          getPageCount: () => totalPages,
+          setPageIndex: (index: number) => setCurrentPage(index + 1),
+          getCanPreviousPage: () => currentPage > 1,
+          getCanNextPage: () => currentPage < totalPages,
+          nextPage: nextPage,
+          previousPage: prevPage,
+        }}
+      />
 
       <div className="grid grid-cols-3 gap-4 mb-6">
         <ChartsTypeRSLogs />
